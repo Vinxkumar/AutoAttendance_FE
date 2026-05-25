@@ -259,7 +259,7 @@ function CreateEventModal({ onClose, onCreate }) {
   );
 }
 
-// ── Home Page ─────────────────────────────────────────────────────────────────
+
 function HomePage({ onNavigate }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -267,7 +267,7 @@ function HomePage({ onNavigate }) {
     <div className="page">
       <div className="home">
         <p className="home-eyebrow">✦ Smart Attendance</p>
-        <h1 className="home-title">Attendance,<br />done right.</h1>
+        <h1 className="home-title" style={{color: "black"}} >Attendance,<br />done right.</h1>
         <p className="home-sub">
           GPS-verified, proxy-proof attendance. Create an event, share a 6-digit code,
           and only students physically present can register.
@@ -282,7 +282,7 @@ function HomePage({ onNavigate }) {
   );
 }
 
-// ── Active Event Page ─────────────────────────────────────────────────────────
+
 function EventPage({ event, onNavigate }) {
   const [active, setActive]         = useState(event.active !== false);
   const [records, setRecords]       = useState([]);
@@ -443,7 +443,7 @@ function EventPage({ event, onNavigate }) {
   );
 }
 
-// ── Join Page ─────────────────────────────────────────────────────────────────
+
 function JoinPage({ prefillCode, onNavigate }) {
   const [code, setCode]   = useState(prefillCode || "");
   const [err, setErr]     = useState("");
@@ -467,11 +467,11 @@ function JoinPage({ prefillCode, onNavigate }) {
     <div className="page">
       <div className="entry-page">
         <div className="entry-card">
-          <h2 style={{ fontSize: "1.4rem", fontWeight: 800, marginBottom: "0.25rem" }}>Enter Event Code</h2>
+          <h2 style={{ fontSize: "1.4rem", fontWeight: 800, marginBottom: "0.25rem", color: "black" }}>Enter Event Code</h2>
           <p style={{ fontSize: "0.88rem", color: "var(--ink3)", marginBottom: "1.5rem" }}>Ask your organizer for the 6-digit code.</p>
           <input className="form-input" placeholder="000000" value={code} maxLength={6}
             onChange={(e) => setCode(e.target.value.replace(/\D/, ""))}
-            style={{ fontSize: "2rem", textAlign: "center", letterSpacing: "0.4em", fontFamily: "Syne, sans-serif", fontWeight: 800 }} />
+            style={{ fontSize: "2rem", textAlign: "center", letterSpacing: "0.4em", fontFamily: "sans-serif", fontWeight: 500 }} />
           {err && <p className="form-error" style={{ textAlign: "center", marginTop: 6 }}>⚠ {err}</p>}
           <button className="btn btn-primary" style={{ width: "100%", justifyContent: "center", marginTop: "1rem" }}
             onClick={handleJoin} disabled={loading}>
@@ -485,7 +485,6 @@ function JoinPage({ prefillCode, onNavigate }) {
   );
 }
 
-// ── Attend Page (student form) ────────────────────────────────────────────────
 function AttendPage({ event, onNavigate }) {
   const [form, setForm]   = useState({ name: "", dept: "", section: "", review: "" });
   const [loc, setLoc]     = useState(null);
@@ -556,10 +555,9 @@ function AttendPage({ event, onNavigate }) {
       <div className="student-page">
         <div className="student-card">
           <span className="student-event-tag">{event.code}</span>
-          <h2 className="student-title">{event.name}</h2>
+          <h2 className="student-title" style={{color: "black"}} >{event.name}</h2>
           <p className="student-sub">📍 {event.venue} &nbsp;·&nbsp; 👤 {event.organized_by}</p>
 
-          {/* GPS status banner */}
           <div className={cls("loc-banner",
             locStatus === "ok"      ? "loc-ok"      :
             locStatus === "fail"    ? "loc-fail"     : "loc-pending")}>
